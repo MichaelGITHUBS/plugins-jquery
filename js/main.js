@@ -1,5 +1,12 @@
 $(document).ready(function() {
-    // Aqui as Máscaras
+    $('#carousel-imagens').slick({
+        autoplay: true,
+    });
+
+    $('.menu-hamburguer').click(function () {
+        $('nav').slideToggle();
+    });
+
     $('#telefone').mask('(00) 00000-0000', {
         placeholder: '(DDD) 12345-6789'
     });
@@ -9,43 +16,66 @@ $(document).ready(function() {
     });
 
     $('#cep').mask('00000-000', {
-        placeholder: '012345-678'
+        placeholder: '01234-567'
     });
 
-    // Carousel
-    $('#carousel-imagens').slick({
-        autoplay: true, 
-    });
-
-    // Validação dos campos se não forem preenchidos
     $('form').validate({
         rules: {
             nome: {
-                required: true
+                required: true,
+                minlength: 3
             },
             email: {
                 required: true,
                 email: true
             },
             telefone: {
-                required: true
+                required: true,
+                minlength: 15
             },
             endereco: {
-                required: true
+                required: true,
+                minlength: 17
             },
             cep: {
-                required: true
+                required: true,
+                minlength: 9
             },
             cpf: {
-                required: true
+                required: true,
+                minlength: 11
+            }
+        },
+        messages: { 
+            nome: {
+                required: "Por favor, insira seu nome completo",
+                minlength: "O nome precisa ter no mínimo 3 caracteres"
             },
+            email: {
+                required: "Por favor, insira o email corretamente",
+                email: "Por favor, insira um e-mail válido"
+            },
+            telefone: {
+                required: "Por favor, insira seu telefone"
+            },
+            cep: {
+                required: "Por favor, insira seu cep",
+                minlength: "O cep precisa ter no mínimo 9 caracteres"
+            },
+            cpf: {
+                required: "Por favor, insira seu cpf",
+                minlength: "O cpf precisa ter no mínimo 11 caracteres"
+            }
         },
         submitHandler: function (form) {
             alert("Sua requisição foi enviada para análise, parabéns pela aquisição!");
-            form.reset();
+            form.submit();
         },
         invalidHandler: function (evento, validador) {
-            alert("Por favor, preencha os campos para prosseguir com a compra!");
+            let camposIncorretos = validador.numberOfInvalids();
+            if (camposIncorretos) {
+                alert(`Há ${camposIncorretos} campos que apresentam inconformidades. Por favor, corrija-os.`);
+            }
         }
     });
 });
