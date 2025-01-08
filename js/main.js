@@ -31,7 +31,8 @@ $(document).ready(function() {
             },
             telefone: {
                 required: true,
-                minlength: 15
+                minlength: 15,
+               
             },
             endereco: {
                 required: true,
@@ -39,11 +40,13 @@ $(document).ready(function() {
             },
             cep: {
                 required: true,
-                minlength: 9
+                minlength: 9,
+              
             },
             cpf: {
                 required: true,
-                minlength: 11
+                minlength: 11,
+               
             }
         },
         messages: { 
