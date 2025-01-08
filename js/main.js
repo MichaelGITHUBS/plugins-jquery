@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $('#carousel-imagens').slick({
         autoplay: true,
+        arrows: false,
+        dots: true,
+        infinite: true
     });
 
     $('.menu-hamburguer').click(function () {
@@ -19,7 +22,7 @@ $(document).ready(function() {
         placeholder: '01234-567'
     });
 
-    $('form').validate({
+    $('#form').validate({
         rules: {
             nome: {
                 required: true,
@@ -30,23 +33,16 @@ $(document).ready(function() {
                 email: true
             },
             telefone: {
-                required: true,
-                minlength: 15,
-               
-            },
-            endereco: {
-                required: true,
-                minlength: 17
-            },
-            cep: {
-                required: true,
-                minlength: 9,
-              
+                required: true
             },
             cpf: {
-                required: true,
-                minlength: 11,
-               
+                required: true
+            },
+            endereco: {
+                required: true
+            },
+            cep: {
+                required: true
             }
         },
         messages: { 
@@ -76,9 +72,13 @@ $(document).ready(function() {
         },
         invalidHandler: function (evento, validador) {
             let camposIncorretos = validador.numberOfInvalids();
-            if (camposIncorretos) {
+            if (camposIncorretos > 0)  {
                 alert(`Há ${camposIncorretos} campos que apresentam inconformidades. Por favor, corrija-os.`);
             }
         }
     });
 });
+
+
+
+ 
