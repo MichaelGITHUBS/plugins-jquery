@@ -10,6 +10,15 @@ body {
     color: #333;
 }
 
+#carousel-imagens {
+    flex-wrap: wrap;
+  }
+  
+  #carousel-imagens img {
+    width: 100%;
+    height: auto; 
+  }
+
 header {
     background-color: #007bff;
     color: #fff;
